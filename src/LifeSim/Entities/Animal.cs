@@ -1,3 +1,5 @@
+using LifeSim.Core;
+using LifeSim.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,6 @@ public abstract class Animal : Organism
     public override void Tick()
     {
         base.Tick();
-
         if (Age == 1 && Energy == 0)
         {
             Energy = InitialEnergy;

@@ -1,5 +1,5 @@
 using System.Linq;
-using LifeSim;
+using LifeSim.Entities;
 using Xunit;
 
 namespace LifeSim.Tests;

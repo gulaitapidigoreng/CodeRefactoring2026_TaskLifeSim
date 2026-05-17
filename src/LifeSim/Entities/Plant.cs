@@ -1,6 +1,7 @@
+using LifeSim.Core;
 using System.Linq;
 
-namespace LifeSim;
+namespace LifeSim.Entities;
 
 public class Plant : Organism
 {
@@ -15,7 +16,7 @@ public class Plant : Organism
 
     public override char Glyph => '♣';
 
-    public override System.ConsoleColor? Color => System.ConsoleColor.Green;
+    public override ConsoleColor? Color => ConsoleColor.Green;
 
     public override void Tick()
     {

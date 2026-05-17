@@ -1,6 +1,7 @@
+using LifeSim.Core;
 using System;
 
-namespace LifeSim;
+namespace LifeSim.Entities;
 
 public abstract class Organism
 {

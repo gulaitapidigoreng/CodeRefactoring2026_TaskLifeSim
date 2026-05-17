@@ -1,4 +1,6 @@
-namespace LifeSim;
+using LifeSim.Core;
+
+namespace LifeSim.Entities;
 
 public class Predator : Animal
 {
@@ -19,7 +21,7 @@ public class Predator : Animal
 
     public override char Glyph => 'W';
 
-    public override System.ConsoleColor? Color => System.ConsoleColor.Red;
+    public override ConsoleColor? Color => ConsoleColor.Red;
 
     protected override Organism? FindPrey() => World.FindNearest<Herbivore>(Pos, Vision);
 

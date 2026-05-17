@@ -1,8 +1,9 @@
+using LifeSim.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LifeSim;
+namespace LifeSim.Core;
 
 public class World
 {
@@ -67,8 +68,8 @@ public class World
 
     public Point2 Wrap(Point2 p)
     {
-        var x = ((p.X % Width) + Width) % Width;
-        var y = ((p.Y % Height) + Height) % Height;
+        var x = (p.X % Width + Width) % Width;
+        var y = (p.Y % Height + Height) % Height;
         return new Point2(x, y);
     }
 
