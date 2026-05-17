@@ -17,7 +17,7 @@ public class Herbivore : Animal
 
     protected override int InitialEnergy => 30;
 
-    protected override char SelfGlyph => 'h';
+    public override char Glyph => 'h';
 
     public override System.ConsoleColor? Color => System.ConsoleColor.Yellow;
 
