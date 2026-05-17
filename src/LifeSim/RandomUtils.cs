@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LifeSim;
 
-public static class Rand
+public static class RandomUtils
 {
     private static readonly Random Random = new();
 
