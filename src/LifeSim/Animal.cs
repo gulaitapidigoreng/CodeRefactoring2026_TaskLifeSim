@@ -40,7 +40,7 @@ public abstract class Animal : Organism
         if (prey != null)
         {
             StepToward(prey.Pos);
-            if (AreNeighborsOrSame(Pos, prey.Pos) && prey.IsAlive)
+            if (IsWithinBiteRange(Pos, prey.Pos) && prey.IsAlive)
             {
                 World.Remove(prey);
                 Energy += BiteGain;
@@ -74,7 +74,7 @@ public abstract class Animal : Organism
 
     protected abstract Animal MakeChild(Point2 p);
 
-    protected static bool AreNeighborsOrSame(Point2 a, Point2 b) =>
+    protected static bool IsWithinBiteRange(Point2 a, Point2 b) =>
         Math.Abs(a.X - b.X) <= 1 && Math.Abs(a.Y - b.Y) <= 1;
 
     protected void StepToward(Point2 target)
