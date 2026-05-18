@@ -1,4 +1,5 @@
 using System;
+using LifeSim.Core;
 using LifeSim.Entities;
 using Xunit;
 

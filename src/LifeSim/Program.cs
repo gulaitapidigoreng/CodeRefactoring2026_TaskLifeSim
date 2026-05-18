@@ -1,3 +1,5 @@
+using LifeSim.Core;
+using LifeSim.Entities;
 using System;
 using System.Linq;
 using System.Threading;
