@@ -16,7 +16,6 @@ public abstract class Organism
     public Point2 Pos { get; set; }
     public bool IsAlive { get; set; } = true;
     public int Age { get; private set; }
-    public abstract char Glyph { get; }
     public virtual ConsoleColor? Color => null;
 
     public void ApplyColor()

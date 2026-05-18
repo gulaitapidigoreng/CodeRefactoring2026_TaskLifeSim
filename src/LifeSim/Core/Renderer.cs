@@ -1,6 +1,7 @@
 ﻿using LifeSim.Entities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,8 @@ namespace LifeSim.Core
                 {
                     if (snapshot.TryGetValue(new Point2(x, y), out var organism))
                     {
-                        organism.ApplyColor();
-                        Console.Write(organism.Glyph);
+                        ApplyColorFor(organism);
+                        Console.Write(GetGlyphFor(organism));
                         Console.ResetColor();
                     }
                     else
@@ -39,6 +40,31 @@ namespace LifeSim.Core
 
                 Console.WriteLine();
             }
+        } 
+
+        // Color and Glyphs Renderer
+        public static void ApplyColorFor(Organism org)
+        {
+            Console.ForegroundColor = org switch
+            {
+                Plant => ConsoleColor.Green,
+                Herbivore => ConsoleColor.Yellow,
+                Predator => ConsoleColor.Red,
+                Animal => ConsoleColor.White
+            };
+        }
+
+        public static char GetGlyphFor(Organism org)
+        {
+            return org switch
+            {
+                Plant => '♣',
+                Herbivore => 'h',
+                Predator => 'W'
+            };
+
+
         }
     }
+
 }

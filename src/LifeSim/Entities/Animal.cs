@@ -18,7 +18,6 @@ public abstract class Animal : Organism
     protected abstract int BiteGain { get; }
     protected abstract int ReproduceThreshold { get; }
     protected abstract int InitialEnergy { get; }
-    public override ConsoleColor? Color => ConsoleColor.White;
     public int Energy { get; set; }
     public int MaxAge { get; set; } = 1000;
 

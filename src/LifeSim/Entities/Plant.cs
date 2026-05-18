@@ -14,8 +14,6 @@ public class Plant : Organism
     {
     }
 
-    public override char Glyph => '♣';
-    public override ConsoleColor? Color => ConsoleColor.Green;
     public override void Tick()
     {
         base.Tick();
