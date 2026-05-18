@@ -1,5 +1,6 @@
 using System;
-using LifeSim;
+using LifeSim.Core;
+using LifeSim.Entities;
 using Xunit;
 
 namespace LifeSim.Tests;

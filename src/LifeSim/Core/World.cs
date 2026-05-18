@@ -1,8 +1,9 @@
+using LifeSim.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LifeSim;
+namespace LifeSim.Core;
 
 public class World
 {
@@ -16,9 +17,7 @@ public class World
     }
 
     public int Width { get; }
-
     public int Height { get; }
-
     public int Tick { get; private set; }
 
     public IEnumerable<Organism> All => _organisms.Where(o => o.IsAlive);
@@ -67,15 +66,15 @@ public class World
 
     public Point2 Wrap(Point2 p)
     {
-        var x = ((p.X % Width) + Width) % Width;
-        var y = ((p.Y % Height) + Height) % Height;
+        var x = (p.X % Width + Width) % Width;
+        var y = (p.Y % Height + Height) % Height;
         return new Point2(x, y);
     }
 
     public void Step()
     {
         Tick++;
-        var snapshot = All.OrderBy(_ => Rand.Next(0, int.MaxValue)).ToList();
+        var snapshot = All.OrderBy(_ => RandomUtils.Next(0, int.MaxValue)).ToList();
         foreach (var o in snapshot)
         {
             if (o.IsAlive)
@@ -139,7 +138,7 @@ public class World
     {
         for (var i = 0; i < 500; i++)
         {
-            var p = new Point2(Rand.Next(0, Width), Rand.Next(0, Height));
+            var p = new Point2(RandomUtils.Next(0, Width), RandomUtils.Next(0, Height));
             if (IsEmpty(p))
             {
                 return p;

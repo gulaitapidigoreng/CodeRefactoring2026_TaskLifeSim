@@ -1,4 +1,4 @@
-namespace LifeSim;
+namespace LifeSim.Entities;
 
 public enum Gender
 {

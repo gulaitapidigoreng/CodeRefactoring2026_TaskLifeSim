@@ -1,3 +1,5 @@
+using LifeSim.Core;
+using LifeSim.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +14,16 @@ public abstract class Animal : Organism
     }
 
     protected abstract int Vision { get; }
-
     protected abstract int MoveCost { get; }
-
     protected abstract int BiteGain { get; }
-
     protected abstract int ReproduceThreshold { get; }
-
     protected abstract int InitialEnergy { get; }
-
-    protected abstract char SelfGlyph { get; }
-
-    public override char Glyph => SelfGlyph;
-
-    public override ConsoleColor? Color => ConsoleColor.White;
-
     public int Energy { get; set; }
-
     public int MaxAge { get; set; } = 1000;
 
     public override void Tick()
     {
         base.Tick();
-
         if (Age == 1 && Energy == 0)
         {
             Energy = InitialEnergy;
@@ -44,7 +33,7 @@ public abstract class Animal : Organism
         if (prey != null)
         {
             StepToward(prey.Pos);
-            if (AreNeighborsOrSame(Pos, prey.Pos) && prey.IsAlive)
+            if (IsWithinBiteRange(Pos, prey.Pos) && prey.IsAlive)
             {
                 World.Remove(prey);
                 Energy += BiteGain;
@@ -68,17 +57,15 @@ public abstract class Animal : Organism
             }
         }
 
-        if (Energy <= 0 || (Age > MaxAge && Rand.Chance(0.02)))
+        if (Energy <= 0 || (Age > MaxAge && RandomUtils.Chance(0.02)))
         {
             World.Remove(this);
         }
     }
 
     protected abstract Organism? FindPrey();
-
     protected abstract Animal MakeChild(Point2 p);
-
-    protected static bool AreNeighborsOrSame(Point2 a, Point2 b) =>
+    protected static bool IsWithinBiteRange(Point2 a, Point2 b) =>
         Math.Abs(a.X - b.X) <= 1 && Math.Abs(a.Y - b.Y) <= 1;
 
     protected void StepToward(Point2 target)

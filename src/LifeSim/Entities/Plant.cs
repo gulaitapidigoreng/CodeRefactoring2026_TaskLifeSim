@@ -1,6 +1,7 @@
+using LifeSim.Core;
 using System.Linq;
 
-namespace LifeSim;
+namespace LifeSim.Entities;
 
 public class Plant : Organism
 {
@@ -13,15 +14,11 @@ public class Plant : Organism
     {
     }
 
-    public override char Glyph => '♣';
-
-    public override System.ConsoleColor? Color => System.ConsoleColor.Green;
-
     public override void Tick()
     {
         base.Tick();
 
-        if (Age >= MatureAge && Rand.Chance(SpreadChance))
+        if (Age >= MatureAge && RandomUtils.Chance(SpreadChance))
         {
             var spots = World.EmptyNeighbors8(Pos).ToList();
             if (spots.Count > 0)
@@ -30,7 +27,7 @@ public class Plant : Organism
             }
         }
 
-        if (Age > MaxAge && Rand.Chance(0.01))
+        if (Age > MaxAge && RandomUtils.Chance(0.01))
         {
             World.Remove(this);
         }

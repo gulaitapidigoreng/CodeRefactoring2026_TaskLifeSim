@@ -1,4 +1,4 @@
-namespace LifeSim;
+namespace LifeSim.Core;
 
 public readonly record struct Point2(int X, int Y)
 {
