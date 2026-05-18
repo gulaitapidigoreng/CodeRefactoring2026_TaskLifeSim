@@ -17,9 +17,7 @@ public class World
     }
 
     public int Width { get; }
-
     public int Height { get; }
-
     public int Tick { get; private set; }
 
     public IEnumerable<Organism> All => _organisms.Where(o => o.IsAlive);

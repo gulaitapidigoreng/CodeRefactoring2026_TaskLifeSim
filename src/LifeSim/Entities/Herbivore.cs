@@ -10,20 +10,12 @@ public class Herbivore : Animal
     }
 
     protected override int Vision => 8;
-
     protected override int MoveCost => 2;
-
     protected override int BiteGain => 18;
-
     protected override int ReproduceThreshold => 60;
-
     protected override int InitialEnergy => 30;
-
     public override char Glyph => 'h';
-
     public override ConsoleColor? Color => ConsoleColor.Yellow;
-
     protected override Organism? FindPrey() => World.FindNearest<Plant>(Pos, Vision);
-
     protected override Animal MakeChild(Point2 p) => new Herbivore(World, p);
 }

@@ -14,19 +14,12 @@ public abstract class Animal : Organism
     }
 
     protected abstract int Vision { get; }
-
     protected abstract int MoveCost { get; }
-
     protected abstract int BiteGain { get; }
-
     protected abstract int ReproduceThreshold { get; }
-
     protected abstract int InitialEnergy { get; }
-
     public override ConsoleColor? Color => ConsoleColor.White;
-
     public int Energy { get; set; }
-
     public int MaxAge { get; set; } = 1000;
 
     public override void Tick()
@@ -72,9 +65,7 @@ public abstract class Animal : Organism
     }
 
     protected abstract Organism? FindPrey();
-
     protected abstract Animal MakeChild(Point2 p);
-
     protected static bool IsWithinBiteRange(Point2 a, Point2 b) =>
         Math.Abs(a.X - b.X) <= 1 && Math.Abs(a.Y - b.Y) <= 1;
 
